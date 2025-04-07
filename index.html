@@ -367,42 +367,20 @@
             
             welcomeElement.innerHTML = message + " Welcome to Organic Farming Knowledge Hub!";
         };
-    </script>
-    <script>
-    // Existing scroll to top & welcome message code...
-    const scrollToTopButton = document.getElementById('scrollToTop');
-    window.onscroll = function() {
-        if (window.scrollY > 300) {
-            scrollToTopButton.style.display = 'block';
-        } else {
-            scrollToTopButton.style.display = 'none';
-        }
-    };
-    scrollToTopButton.onclick = function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    };
-
-    window.onload = function () {
-        const currentHour = new Date().getHours();
-        const welcomeElement = document.getElementById('welcomeMessage');
-        let message = "";
-        if (currentHour >= 5 && currentHour < 12) {
-            message = "Good Morning!";
-        } else if (currentHour >= 12 && currentHour < 18) {
-            message = "Good Afternoon!";
-        } else {
-            message = "Good Evening!";
-        }
-        welcomeElement.innerHTML = message + " Welcome to Organic Farming Knowledge Hub!";
-
-        // Register Service Worker
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
-                .then(reg => console.log('Service Worker Registered', reg))
-                .catch(err => console.log('Service Worker registration failed', err));
-        }
-    };
+  
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./service-worker.js')
+        .then(reg => {
+          console.log('Service Worker registered', reg);
+        })
+        .catch(err => {
+          console.error('Service Worker registration failed', err);
+        });
+    });
+  }
 </script>
+
 
     
 
