@@ -3,7 +3,12 @@
 const CACHE_NAME = 'organic-farming-cache-v1';
 const urlsToCache = [
   '/',
-  '/index.html'
+  '/index.html',
+  '/firstbajra.html',
+  '/firstrice.html',
+  '/firstsugarcane.html',
+  '/firstwheat.html'
+
 ];
 
 self.addEventListener('install', function(event) {
